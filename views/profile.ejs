@@ -20,7 +20,7 @@
         <p class="mt-8 text-sm">Create a post</p>
         <form action="/post" method="post">
             <textarea name="content" placeholder="What's on your mind ?"
-                class="inline-block outline-none bg-zinc-800 border-[2px] border-zinc-700 px-4 py-2 mt-3 resize-none rounded-md w-1/3"></textarea>
+                class="inline-block outline-none bg-zinc-800 border-[2px] border-zinc-700 px-4 py-2 mt-3 resize-none rounded-md w-full sm:w-1/3"></textarea>
             <input type="submit" class="block w-fit py-1 px-4 bg-blue-500 hover:bg-blue-400 rounded-md mt-1 transition"
                 value="Create post">
         </form>
@@ -36,8 +36,13 @@
                             <%= post.content %>
                         </p>
                         <div class="btns flex gap-3 items-center mt-6">
-                            <a href="/post/<%= post._id %>/like" class="text-blue-400">like </a>
-                            <a href="/post/<%= post._id %>/edit" class="text-zinc-500">edit </a>
+                            <span>
+                                <%= post.likes.length %>
+                            </span>
+                            <a href="/like/<%= post._id %>" class="text-blue-400 w-[42px]">
+                                <%= post.likes.indexOf(user._id)===-1 ? "Like" : "Unlike" %>
+                            </a>
+                            <a href="/edit/<%= post._id %>" class="text-zinc-500">edit </a>
                         </div>
                     </div>
                     <% }) %>
