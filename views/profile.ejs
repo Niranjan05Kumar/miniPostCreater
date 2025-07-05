@@ -35,14 +35,17 @@
                         <p class="text-sm">
                             <%= post.content %>
                         </p>
-                        <div class="btns flex gap-3 items-center mt-6">
-                            <span>
-                                <%= post.likes.length %>
-                            </span>
-                            <a href="/like/<%= post._id %>" class="text-blue-400 w-[42px]">
-                                <%= post.likes.indexOf(user._id)===-1 ? "Like" : "Unlike" %>
-                            </a>
-                            <a href="/edit/<%= post._id %>" class="text-zinc-500">edit </a>
+                        <div class="w-full flex justify-between items-center mt-6">
+                            <div class="btns flex gap-3 items-center">
+                                <span>
+                                    <%= post.likes.length %>
+                                </span>
+                                <a href="/like/<%= post._id %>" class="text-blue-400 w-[42px]">
+                                    <%= post.likes.indexOf(user._id)===-1 ? "Like" : "Unlike" %>
+                                </a>
+                                <a href="/edit/<%= post._id %>" class="text-zinc-500">edit </a>
+                            </div>
+                            <a href="/delete/<%= post._id %>" class="py-1 px-3 bg-red-500 hover:bg-red-400 rounded-md transition">Logout</a>
                         </div>
                     </div>
                     <% }) %>
