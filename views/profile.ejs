@@ -14,9 +14,17 @@
             <a href="/logout" class="py-1 px-3 bg-red-500 hover:bg-red-400 rounded-md transition">Logout</a>
         </div>
         <h1 class="w-fit mb-6 text-3xl font-semibold">Profile</h1>
-        <h2 class="text-2xl">Hello👋, <span class="font-semibold">
-                <%= user.name %>.
-            </span></h2>
+        <h2 class="text-2xl flex justify-between items-center w-full sm:w-1/3">
+            <div class="flex gap-3">
+                <div class="w-10 h-10 rounded-full overflow-hidden">
+                    <img src="/images/uploads/<%= user.profilePic %>" alt="" class="w-full h-full object-cover">
+                </div>
+                <span class="font-semibold">
+                    <%= user.username %>.
+                </span>
+            </div>
+            <a href="/profilepic" class="block text-sm h-fit w-fit py-1 px-4 bg-zinc-500 hover:bg-zinc-400 rounded-md mt-1 transition">Upload profile</a>
+        </h2>
         <p class="mt-8 text-sm">Create a post</p>
         <form action="/post" method="post">
             <textarea name="content" placeholder="What's on your mind ?"
@@ -26,7 +34,7 @@
         </form>
 
         <div class="posts mt-15">
-            <span class="text-zinc-500 font-semibold text-sm">Your post.</span>
+            <span class="text-zinc-500 font-semibold text-sm">Your posts.</span>
             <div class="postContainer w-full flex flex-wrap gap-3 my-6">
                 <% user.posts.forEach((post)=> { %>
                     <div class="post bg-zinc-700 rounded-lg py-3 px-5 w-full sm:w-[400px]">
@@ -45,7 +53,8 @@
                                 </a>
                                 <a href="/edit/<%= post._id %>" class="text-zinc-500">edit </a>
                             </div>
-                            <a href="/delete/<%= post._id %>" class="py-1 px-3 bg-red-500 hover:bg-red-400 rounded-md transition">Logout</a>
+                            <a href="/delete/<%= post._id %>"
+                                class="py-1 px-3 bg-red-500 hover:bg-red-400 rounded-md transition">Delete</a>
                         </div>
                     </div>
                     <% }) %>
